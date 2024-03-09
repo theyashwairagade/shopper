@@ -165,6 +165,27 @@ app.post('/signup',async(req,res)=>{
   res.json({success:true,token})
 })
 
+// Creating Route for user login
+app.post('/login',async(req,res)=>{
+  let user=await Users.findOne({email:req.body.email});
+  if(user){
+    const passCompare=req.body.password === user.password;
+    if(passCompare){
+      const data={
+        user:{
+          id:user.id
+        }
+      }
+      const token=jwt.sign(data,'secret_ecom');
+      res.json({success:true,token})
+    }else{
+      res.json({success:false,error:"Invalid Password!"})
+    }
+  }else{
+    res.json({success:false,errors:"Email Not Found! Please Signup."})
+  }
+})
+
 app.listen(port, (error) => {
   if (!error) {
     console.log("Server running on port " + port);

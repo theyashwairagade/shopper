@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 const port = 4000;
-const connectionString="mongodb+srv://theyashwairagade:Password%40123@cluster0.n5u8jpr.mongodb.net/shopper";
+const connectionString="your connection string of mongoDB database";
 
 // Connection to database
 mongoose.connect(connectionString, {

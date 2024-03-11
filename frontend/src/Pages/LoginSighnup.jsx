@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './CSS/LoginSignup.css'
+import BASE_URL from '../config'
 
 export const LoginSighnup = () => {
   const [state,setState]=useState("Login");
@@ -15,7 +16,7 @@ export const LoginSighnup = () => {
   const login=async()=>{
     console.log("Logged in");
     let responseData;
-    await fetch('http://localhost:4000/login',{
+    await fetch(`${BASE_URL}/login`,{
       method:'POST',
       headers:{
         Accept:'application/form-data',
@@ -33,7 +34,7 @@ export const LoginSighnup = () => {
   const signup=async()=>{
     console.log("Signed in");
     let responseData;
-    await fetch('http://localhost:4000/signup',{
+    await fetch(`${BASE_URL}/signup`,{
       method:'POST',
       headers:{
         Accept:'application/form-data',
